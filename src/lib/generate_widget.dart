@@ -13,20 +13,23 @@ class GenerateFoodWidget extends StatefulWidget {
 class _GenerateFoodState extends State<GenerateFoodWidget> {
   Food selectedFood = Food("NULL", [], "NULL", "NULL");
 
+  bool _contain(Food currFood) {
+    for (var i = 0; i < globalFilters.length; i++) {
+      if (!currFood.type.contains(globalFilters[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   void _selectRandomFood() {
     setState(() {
       List<Food> filteredFoods = globalFilters.length == 0
           ? foods
-          : foods
-              .where((currFood) => currFood.type.contains([globalFilters]))
-              .toList();
-
+          : foods.where((currFood) => _contain(currFood)).toList();
       Random rand = new Random();
-      print(filteredFoods.length);
       int next = rand.nextInt(filteredFoods.length);
-      print(next);
       selectedFood = filteredFoods.elementAt(next);
-      print(selectedFood.name);
     });
   }
 
