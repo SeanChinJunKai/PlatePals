@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../filter_widget.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -41,7 +42,7 @@ class _SidebarState extends State<Sidebar> {
       body: Scaffold(
           key: _scaffoldKey,
           drawer: Drawer(
-            child: Center(child: Text('Drawer')),
+            child: CheckBoxTileListWidget(),
           )),
     );
   }
