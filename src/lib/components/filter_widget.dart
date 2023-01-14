@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'global.dart';
 
 void main() => runApp(const MyApp());
 
@@ -32,8 +33,6 @@ class _CheckBoxTileListWidgetState extends State<CheckBoxTileListWidget> {
   final int vegetarian_index = 1;
   final int vegan_index = 2;
 
-  List<int> _selected_box = [11];
-
   @override
   Widget build(BuildContext context) {
     List<CheckBoxListTileModel> list = CheckBoxListTileModel.getUsers();
@@ -44,14 +43,14 @@ class _CheckBoxTileListWidgetState extends State<CheckBoxTileListWidget> {
             textAlign: TextAlign.left,
             style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
           ),
-          value: _selected_box.contains(halal_index),
+          value: globalFilters.contains(FoodType.Halal),
           onChanged: (bool? value) {
             setState(() {
               timeDilation = value! ? 1.5 : 1.0;
-              if (_selected_box.contains(halal_index)) {
-                _selected_box.remove(halal_index);
+              if (globalFilters.contains(FoodType.Halal)) {
+                globalFilters.remove(FoodType.Halal);
               } else {
-                _selected_box.add(halal_index);
+                globalFilters.add(FoodType.Halal);
               }
             });
           },
@@ -62,14 +61,14 @@ class _CheckBoxTileListWidgetState extends State<CheckBoxTileListWidget> {
             textAlign: TextAlign.left,
             style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
           ),
-          value: _selected_box.contains(vegetarian_index),
+          value: globalFilters.contains(FoodType.Vegetarian),
           onChanged: (bool? value) {
             setState(() {
               timeDilation = value! ? 1.5 : 1.0;
-              if (_selected_box.contains(vegetarian_index)) {
-                _selected_box.remove(vegetarian_index);
+              if (globalFilters.contains(FoodType.Vegetarian)) {
+                globalFilters.remove(FoodType.Vegetarian);
               } else {
-                _selected_box.add(vegetarian_index);
+                globalFilters.add(FoodType.Vegetarian);
               }
             });
           },
@@ -80,14 +79,14 @@ class _CheckBoxTileListWidgetState extends State<CheckBoxTileListWidget> {
             textAlign: TextAlign.left,
             style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
           ),
-          value: _selected_box.contains(vegan_index),
+          value: globalFilters.contains(FoodType.Vegan),
           onChanged: (bool? value) {
             setState(() {
               timeDilation = value! ? 1.5 : 1.0;
-              if (_selected_box.contains(vegan_index)) {
-                _selected_box.remove(vegan_index);
+              if (globalFilters.contains(FoodType.Vegan)) {
+                globalFilters.remove(FoodType.Vegan);
               } else {
-                _selected_box.add(vegan_index);
+                globalFilters.add(FoodType.Vegan);
               }
             });
           },
