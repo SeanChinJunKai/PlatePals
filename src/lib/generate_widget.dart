@@ -15,11 +15,11 @@ class _GenerateFoodState extends State<GenerateFoodWidget> {
 
   bool _contain(Food currFood) {
     for (var i = 0; i < globalFilters.length; i++) {
-      if (currFood.type.contains(globalFilters[i])) {
-        return true;
+      if (!currFood.type.contains(globalFilters[i])) {
+        return false;
       }
     }
-    return false;
+    return true;
   }
 
   void _selectRandomFood() {
