@@ -11,4 +11,8 @@ One of the most difficult decisions that students have to make is the question o
 
 ## Tech Stack
 - Flutter
-- Dart
+
+## Future Improvements
+- Improve UI Design
+- Addtional Filters such as Price
+- History of Past Generated Food Choices
