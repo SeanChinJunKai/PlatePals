@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/sidebar.dart';
+import 'components/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Sidebar(),
+      home: const Home(),
     );
   }
 }
