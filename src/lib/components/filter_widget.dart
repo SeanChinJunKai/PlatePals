@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
-import 'global.dart';
+import '../global.dart';
 
 void main() => runApp(const MyApp());
 
