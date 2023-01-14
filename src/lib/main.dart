@@ -39,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               if (_scaffoldKey.currentState?.isDrawerOpen == false) {
                 _scaffoldKey.currentState?.openDrawer();
+              } else {
+                _scaffoldKey.currentState?.openEndDrawer();
               }
             },
             child: Align(
