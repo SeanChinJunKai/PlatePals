@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../filter_widget.dart';
+import './filter_widget.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'global.dart';
+import 'dart:developer';
 import 'dart:math';
 
 class GenerateFoodWidget extends StatefulWidget {
@@ -10,7 +11,7 @@ class GenerateFoodWidget extends StatefulWidget {
 }
 
 class _GenerateFoodState extends State<GenerateFoodWidget> {
-  Food selectedFood = Food("MULL", FoodType.Default, "NULL", "NULL");
+  Food selectedFood = Food("NULL", [], "NULL", "NULL");
 
   void _selectRandomFood() {
     setState(() {
@@ -20,7 +21,12 @@ class _GenerateFoodState extends State<GenerateFoodWidget> {
               .where((currFood) => currFood.type.contains([globalFilters]))
               .toList();
 
-      selectedFood = filteredFoods[Random().nextInt(filteredFoods.length)];
+      Random rand = new Random();
+      print(filteredFoods.length);
+      int next = rand.nextInt(filteredFoods.length);
+      print(next);
+      selectedFood = filteredFoods.elementAt(next);
+      print(selectedFood.name);
     });
   }
 
@@ -30,9 +36,10 @@ class _GenerateFoodState extends State<GenerateFoodWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            selectedFood.name ?? 'Press the button to select a food',
+            selectedFood.name,
             style: TextStyle(fontSize: 20),
           ),
+          TextButton(onPressed: _selectRandomFood, child: Text("Generate")),
         ]);
   }
 }

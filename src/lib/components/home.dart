@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'filter_widget.dart';
+import 'package:src/generate_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -44,7 +45,7 @@ class _HomeState extends State<Home> {
           drawer: Drawer(
             child: CheckBoxTileListWidget(),
           ),
-          body: Column(children: [Text("HI"), Text("HI")]),
+          body: Center(child: GenerateFoodWidget()),
         ));
   }
 }
