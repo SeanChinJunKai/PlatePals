@@ -28,34 +28,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: Center(child: Text('Drawer')),
+      appBar: AppBar(
+        centerTitle: true,
+        leading: Builder(builder: (context) {
+          return GestureDetector(
+            onTap: () {
+              if (_scaffoldKey.currentState?.isDrawerOpen == false) {
+                _scaffoldKey.currentState?.openDrawer();
+              }
+            },
+            child: Align(
+                child: Text(
+              "Filter",
+              style: TextStyle(color: Colors.white),
+            )),
+          );
+        }),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/images/logo.png', height: 30, width: 30),
+            Text("Plate Pals")
+          ],
         ),
-        appBar: AppBar(
-          centerTitle: true,
-          leading: Builder(builder: (context) {
-            return GestureDetector(
-              onTap: () {
-                Scaffold.of(context).openDrawer();
-              },
-              child: Align(
-                  child: Text(
-                "Filter",
-                style: TextStyle(color: Colors.white),
-              )),
-            );
-          }),
-          title: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset('assets/images/logo.png', height: 30, width: 30),
-              Text("Plate Pals")
-            ],
-          ),
-        ));
+      ),
+      body: Scaffold(
+          key: _scaffoldKey,
+          drawer: Drawer(
+            child: Center(child: Text('Drawer')),
+          )),
+    );
   }
 }
