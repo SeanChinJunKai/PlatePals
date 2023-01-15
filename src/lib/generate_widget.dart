@@ -11,7 +11,7 @@ class GenerateFoodWidget extends StatefulWidget {
 }
 
 class _GenerateFoodState extends State<GenerateFoodWidget> {
-  Food selectedFood = Food("NULL", [], "NULL", "NULL");
+  Food selectedFood = Food("Press button to generate food", [], "", "");
 
   bool _contain(Food currFood) {
     for (var i = 0; i < globalFilters.length; i++) {
@@ -38,11 +38,38 @@ class _GenerateFoodState extends State<GenerateFoodWidget> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            selectedFood.name,
-            style: TextStyle(fontSize: 20),
-          ),
-          TextButton(onPressed: _selectRandomFood, child: Text("Generate")),
+          Wrap(
+              spacing: 20,
+              direction: Axis.vertical,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: <Widget>[
+                Text(
+                  selectedFood.name,
+                  style: TextStyle(fontSize: 45),
+                ),
+                Wrap(
+                    spacing: 5,
+                    direction: Axis.vertical,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        selectedFood.price,
+                        style: TextStyle(fontSize: 25),
+                      ),
+                      Text(
+                        selectedFood.location,
+                        style: TextStyle(fontSize: 25),
+                      )
+                    ]),
+              ]),
+          SizedBox(height: 20),
+          TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: _selectRandomFood,
+              child: Text("Generate", style: TextStyle(fontSize: 25))),
         ]);
   }
 }

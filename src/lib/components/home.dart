@@ -14,38 +14,38 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          leading: Builder(builder: (context) {
-            return GestureDetector(
-              onTap: () {
-                if (_scaffoldKey.currentState?.isDrawerOpen == false) {
-                  _scaffoldKey.currentState?.openDrawer();
-                } else {
-                  _scaffoldKey.currentState?.openEndDrawer();
-                }
-              },
-              child: Align(
-                  child: Text(
-                "Filter",
-                style: TextStyle(color: Colors.white),
-              )),
-            );
-          }),
-          title: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset('assets/images/logo.png', height: 30, width: 30),
-              Text("Plate Pals")
-            ],
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        leading: Builder(builder: (context) {
+          return GestureDetector(
+            onTap: () {
+              if (_scaffoldKey.currentState?.isDrawerOpen == false) {
+                _scaffoldKey.currentState?.openDrawer();
+              } else {
+                _scaffoldKey.currentState?.openEndDrawer();
+              }
+            },
+            child: Align(
+                child: Text(
+              "Filter",
+              style: TextStyle(color: Colors.white),
+            )),
+          );
+        }),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/images/logo.png', height: 30, width: 30),
+            Text("Plate Pals")
+          ],
         ),
-        body: Scaffold(
+      ),
+      body: Scaffold(
           key: _scaffoldKey,
           drawer: Drawer(
             child: CheckBoxTileListWidget(),
           ),
-          body: Center(child: GenerateFoodWidget()),
-        ));
+          body: Center(child: GenerateFoodWidget())),
+    );
   }
 }
